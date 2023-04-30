@@ -1,26 +1,28 @@
-import WebMap from 'esri/WebMap';
-import MapView from 'esri/views/MapView';
+import { mapInit } from "./map";
 
-
-function mapInit() {
-
-
-    const webmap = new WebMap({
-        basemap: 'streets-vector'
-    });
-
-    const view = new MapView({
-        map: webmap,
-        container: 'viewDiv',
-        center: [23.321590139866355, 42.697866831005435],
-        zoom: 12
-    });
+const inp = document.getElementsByTagName('input')[0];
+const btnSbt = document.getElementsByTagName('button')[0];
+inp.addEventListener('keyup', (e) => handleChange(e))
+btnSbt.addEventListener('click', (e) => handleSubmit(e))
 
 
 
+mapInit()
 
-    view.when(() => console.log('view is ready!'))
+
+function handleChange(e: Event) {
+    const address = e.target as HTMLInputElement;
+
+    console.log(address.value)
 
 }
 
-mapInit()
+
+
+function handleSubmit(e: Event) {
+
+
+    e.preventDefault();
+
+    console.log(inp.value)
+}

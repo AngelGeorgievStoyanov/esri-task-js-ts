@@ -1,19 +1,17 @@
-define(["require", "exports", "tslib", "esri/WebMap", "esri/views/MapView"], function (require, exports, tslib_1, WebMap_1, MapView_1) {
+define(["require", "exports", "./map"], function (require, exports, map_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    WebMap_1 = tslib_1.__importDefault(WebMap_1);
-    MapView_1 = tslib_1.__importDefault(MapView_1);
-    function mapInit() {
-        var webmap = new WebMap_1.default({
-            basemap: 'streets-vector'
-        });
-        var view = new MapView_1.default({
-            map: webmap,
-            container: 'viewDiv',
-            center: [23.321590139866355, 42.697866831005435],
-            zoom: 12
-        });
-        view.when(function () { return console.log('view is ready!'); });
+    var inp = document.getElementsByTagName('input')[0];
+    var btnSbt = document.getElementsByTagName('button')[0];
+    inp.addEventListener('keyup', function (e) { return handleChange(e); });
+    btnSbt.addEventListener('click', function (e) { return handleSubmit(e); });
+    (0, map_1.mapInit)();
+    function handleChange(e) {
+        var address = e.target;
+        console.log(address.value);
     }
-    mapInit();
+    function handleSubmit(e) {
+        e.preventDefault();
+        console.log(inp.value);
+    }
 });
