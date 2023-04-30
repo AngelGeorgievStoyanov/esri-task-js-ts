@@ -1,10 +1,11 @@
-define(["require", "exports", "tslib", "./arcgisService", "./map"], function (require, exports, tslib_1, arcgisService_1, map_1) {
+define(["require", "exports", "tslib", "./appendLiElem", "./arcgisService", "./map"], function (require, exports, tslib_1, appendLiElem_1, arcgisService_1, map_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var inp = document.getElementsByTagName('input')[0];
     var btnSbt = document.getElementsByTagName('button')[0];
     inp.addEventListener('keyup', function (e) { return handleChange(e); });
     btnSbt.addEventListener('click', function (e) { return handleSubmit(e); });
+    var findSuggestAdressArr;
     (0, map_1.mapInit)();
     function handleChange(e) {
         return tslib_1.__awaiter(this, void 0, void 0, function () {
@@ -14,8 +15,10 @@ define(["require", "exports", "tslib", "./arcgisService", "./map"], function (re
                     case 0:
                         address = e.target;
                         console.log(address.value);
-                        return [4 /*yield*/, (0, arcgisService_1.findSuggestAdress)(address.value).then(function (data) {
+                        return [4 /*yield*/, (0, arcgisService_1.findSuggestAddress)(address.value).then(function (data) {
                                 console.log(data.suggestions);
+                                findSuggestAdressArr = data.suggestions;
+                                (0, appendLiElem_1.appendLi)(findSuggestAdressArr);
                             }).catch(function (err) {
                                 console.log(err);
                             })];

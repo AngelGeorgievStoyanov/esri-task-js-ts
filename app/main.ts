@@ -1,4 +1,5 @@
-import { findAddress, findSuggestAdress } from "./arcgisService";
+import { appendLi } from "./appendLiElem";
+import { findAddress, findSuggestAddress } from "./arcgisService";
 import { mapInit } from "./map";
 
 const inp = document.getElementsByTagName('input')[0];
@@ -6,6 +7,7 @@ const btnSbt = document.getElementsByTagName('button')[0];
 inp.addEventListener('keyup', (e) => handleChange(e));
 btnSbt.addEventListener('click', (e) => handleSubmit(e));
 
+let findSuggestAdressArr: [];
 
 
 mapInit();
@@ -16,10 +18,12 @@ async function handleChange(e: Event) {
 
     console.log(address.value);
 
-    await findSuggestAdress(address.value).then((data) => {
+    await findSuggestAddress(address.value).then((data) => {
         console.log(data.suggestions);
 
-
+        findSuggestAdressArr = data.suggestions;
+        appendLi(findSuggestAdressArr);
+  
     }).catch((err) => {
         console.log(err);
     });

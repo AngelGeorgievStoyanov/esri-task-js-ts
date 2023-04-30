@@ -2,7 +2,7 @@ const apiURL = 'https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeSer
 
 
 
-export async function findSuggestAdress(adress: string) {
+export async function findSuggestAddress(adress: string) {
 
     const response = await fetch(`${apiURL}/suggest?f=json&text=${adress}`);
 

@@ -1,9 +1,9 @@
 define(["require", "exports", "tslib"], function (require, exports, tslib_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.findAddress = exports.findSuggestAdress = void 0;
+    exports.findAddress = exports.findSuggestAddress = void 0;
     var apiURL = 'https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/';
-    function findSuggestAdress(adress) {
+    function findSuggestAddress(adress) {
         return tslib_1.__awaiter(this, void 0, void 0, function () {
             var response;
             return tslib_1.__generator(this, function (_a) {
@@ -16,7 +16,7 @@ define(["require", "exports", "tslib"], function (require, exports, tslib_1) {
             });
         });
     }
-    exports.findSuggestAdress = findSuggestAdress;
+    exports.findSuggestAddress = findSuggestAddress;
     ;
     function findAddress(adress) {
         return tslib_1.__awaiter(this, void 0, void 0, function () {
