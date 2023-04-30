@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently --kill-others \"tsc -w\" \"lite-server\""
+    "start": "tsc && concurrently \"tsc -w\" \"lite-server\" "
   },
   "author": "Angel Stoyanov",
   "license": "ISC",

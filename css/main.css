@@ -65,3 +65,42 @@ main {
     align-items: center;
     flex-direction: column;
 }
+
+footer {
+    display: flex;
+    flex-direction: column;
+    background-color: #0072fffa;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+}
+
+
+.map {
+    border: solid 1px black;
+    box-shadow: 2px 2px 4px black;
+}
+
+
+.footer-h5 {
+    color: white;
+}
+
+
+
+.header {
+    background-color: #0072fffa;
+    height: 70px;
+    background-image: url('https://esribulgaria.com/wp-content/themes/esribulgaria2013/images/logotagline.png');
+    width: 100vw;
+}
+
+
+@media screen and (max-width:500px) {
+    .form-search-address {
+        display: flex;
+        width: 65%;
+    }
+
+}

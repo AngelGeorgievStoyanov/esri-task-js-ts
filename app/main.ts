@@ -38,27 +38,21 @@ async function handleChange(e: Event) {
 
 async function handleSubmit(e: Event) {
 
-
     e.preventDefault();
-
 
     if (inp.value !== null && (typeof inp.value === 'string')) {
 
         await findAddress(inp.value).then((data) => {
 
-
-            console.log(data.candidates[0]);
             x = data.candidates[0].location.x;
             y = data.candidates[0].location.y;
-
-            console.log(x)
-            console.log(y)
 
 
             mapInit(x, y, z = 14)
 
-            findSuggestAdressArr = []
-            appendLi(findSuggestAdressArr)
+            findSuggestAdressArr = [];
+           
+            appendLi(findSuggestAdressArr);
 
         }).catch((err) => {
             console.log(err);

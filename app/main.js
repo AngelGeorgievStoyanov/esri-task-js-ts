@@ -47,11 +47,8 @@ define(["require", "exports", "tslib", "./appendLiElem", "./arcgisService", "./m
                         e.preventDefault();
                         if (!(inp.value !== null && (typeof inp.value === 'string'))) return [3 /*break*/, 2];
                         return [4 /*yield*/, (0, arcgisService_1.findAddress)(inp.value).then(function (data) {
-                                console.log(data.candidates[0]);
                                 x = data.candidates[0].location.x;
                                 y = data.candidates[0].location.y;
-                                console.log(x);
-                                console.log(y);
                                 (0, map_1.mapInit)(x, y, z = 14);
                                 findSuggestAdressArr = [];
                                 (0, appendLiElem_1.appendLi)(findSuggestAdressArr);
