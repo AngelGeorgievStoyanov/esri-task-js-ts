@@ -45,7 +45,7 @@ define(["require", "exports", "tslib", "./appendLiElem", "./arcgisService", "./m
                 switch (_a.label) {
                     case 0:
                         e.preventDefault();
-                        if (!(inp.value !== null && (typeof inp.value === 'string'))) return [3 /*break*/, 2];
+                        if (!(typeof inp.value === "string" && inp.value.trim() !== "")) return [3 /*break*/, 2];
                         return [4 /*yield*/, (0, arcgisService_1.findAddress)(inp.value).then(function (data) {
                                 x = data.candidates[0].location.x;
                                 y = data.candidates[0].location.y;

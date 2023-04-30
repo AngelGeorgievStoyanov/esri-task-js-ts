@@ -39,8 +39,8 @@ async function handleChange(e: Event) {
 async function handleSubmit(e: Event) {
 
     e.preventDefault();
-
-    if (inp.value !== null && (typeof inp.value === 'string')) {
+  
+    if (typeof inp.value === "string" && inp.value.trim() !== "") {
 
         await findAddress(inp.value).then((data) => {
 
