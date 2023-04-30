@@ -8,26 +8,30 @@ inp.addEventListener('keyup', (e) => handleChange(e));
 btnSbt.addEventListener('click', (e) => handleSubmit(e));
 
 let findSuggestAdressArr: [];
+let x: number | undefined;
+let y: number | undefined;
+let z: number = 12;
 
-
-mapInit();
+mapInit(x, y, z);
 
 
 async function handleChange(e: Event) {
     const address = e.target as HTMLInputElement;
 
-    console.log(address.value);
+    if (typeof address.value === "string" && address.value.trim() !== "") {
 
-    await findSuggestAddress(address.value).then((data) => {
-        console.log(data.suggestions);
+        await findSuggestAddress(address.value).then((data) => {
+            findSuggestAdressArr = data.suggestions;
+            appendLi(findSuggestAdressArr);
 
-        findSuggestAdressArr = data.suggestions;
+        }).catch((err) => {
+            console.log(err);
+        });
+    } else {
+        findSuggestAdressArr = [];
         appendLi(findSuggestAdressArr);
-  
-    }).catch((err) => {
-        console.log(err);
-    });
 
+    };
 };
 
 
@@ -37,17 +41,29 @@ async function handleSubmit(e: Event) {
 
     e.preventDefault();
 
-    console.log(inp.value);
+
+    if (inp.value !== null && (typeof inp.value === 'string')) {
+
+        await findAddress(inp.value).then((data) => {
 
 
-    await findAddress(inp.value).then((data) => {
+            console.log(data.candidates[0]);
+            x = data.candidates[0].location.x;
+            y = data.candidates[0].location.y;
+
+            console.log(x)
+            console.log(y)
 
 
-        console.log(data.candidates[0]);
+            mapInit(x, y, z = 14)
 
+            findSuggestAdressArr = []
+            appendLi(findSuggestAdressArr)
 
-    }).catch((err) => {
-        console.log(err);
-    });
+        }).catch((err) => {
+            console.log(err);
+        });
+
+    }
 
 };

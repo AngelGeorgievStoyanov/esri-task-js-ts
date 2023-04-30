@@ -2,7 +2,8 @@ import WebMap from 'esri/WebMap';
 import MapView from 'esri/views/MapView';
 
 
-export function mapInit() {
+export async function mapInit(x: number, y: number, z: number) {
+
 
 
     const webmap = new WebMap({
@@ -12,8 +13,8 @@ export function mapInit() {
     const view = new MapView({
         map: webmap,
         container: 'viewDiv',
-        center: [23.321590139866355, 42.697866831005435],
-        zoom: 12
+        center: [x || 23.321590139866355, y || 42.697866831005435],
+        zoom: z
     });
 
 
@@ -22,5 +23,3 @@ export function mapInit() {
     view.when(() => console.log('view is ready!'))
 
 }
-
-mapInit()

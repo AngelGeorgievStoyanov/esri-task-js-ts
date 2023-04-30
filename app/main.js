@@ -6,7 +6,10 @@ define(["require", "exports", "tslib", "./appendLiElem", "./arcgisService", "./m
     inp.addEventListener('keyup', function (e) { return handleChange(e); });
     btnSbt.addEventListener('click', function (e) { return handleSubmit(e); });
     var findSuggestAdressArr;
-    (0, map_1.mapInit)();
+    var x;
+    var y;
+    var z = 12;
+    (0, map_1.mapInit)(x, y, z);
     function handleChange(e) {
         return tslib_1.__awaiter(this, void 0, void 0, function () {
             var address;
@@ -14,9 +17,8 @@ define(["require", "exports", "tslib", "./appendLiElem", "./arcgisService", "./m
                 switch (_a.label) {
                     case 0:
                         address = e.target;
-                        console.log(address.value);
+                        if (!(typeof address.value === "string" && address.value.trim() !== "")) return [3 /*break*/, 2];
                         return [4 /*yield*/, (0, arcgisService_1.findSuggestAddress)(address.value).then(function (data) {
-                                console.log(data.suggestions);
                                 findSuggestAdressArr = data.suggestions;
                                 (0, appendLiElem_1.appendLi)(findSuggestAdressArr);
                             }).catch(function (err) {
@@ -24,6 +26,13 @@ define(["require", "exports", "tslib", "./appendLiElem", "./arcgisService", "./m
                             })];
                     case 1:
                         _a.sent();
+                        return [3 /*break*/, 3];
+                    case 2:
+                        findSuggestAdressArr = [];
+                        (0, appendLiElem_1.appendLi)(findSuggestAdressArr);
+                        _a.label = 3;
+                    case 3:
+                        ;
                         return [2 /*return*/];
                 }
             });
@@ -36,15 +45,23 @@ define(["require", "exports", "tslib", "./appendLiElem", "./arcgisService", "./m
                 switch (_a.label) {
                     case 0:
                         e.preventDefault();
-                        console.log(inp.value);
+                        if (!(inp.value !== null && (typeof inp.value === 'string'))) return [3 /*break*/, 2];
                         return [4 /*yield*/, (0, arcgisService_1.findAddress)(inp.value).then(function (data) {
                                 console.log(data.candidates[0]);
+                                x = data.candidates[0].location.x;
+                                y = data.candidates[0].location.y;
+                                console.log(x);
+                                console.log(y);
+                                (0, map_1.mapInit)(x, y, z = 14);
+                                findSuggestAdressArr = [];
+                                (0, appendLiElem_1.appendLi)(findSuggestAdressArr);
                             }).catch(function (err) {
                                 console.log(err);
                             })];
                     case 1:
                         _a.sent();
-                        return [2 /*return*/];
+                        _a.label = 2;
+                    case 2: return [2 /*return*/];
                 }
             });
         });
