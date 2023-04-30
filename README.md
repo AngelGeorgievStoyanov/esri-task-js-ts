@@ -2,7 +2,7 @@
 # GitHub https://github.com/AngelGeorgievStoyanov/esri-task-js-ts
 ## Author: Angel Stoyanov
 ### Technologies used:
-* JavaScript-TypeSript
+* JavaScript-TypeScript
 * HTML
 * CSS
 * concurrently
