@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "module": "amd",
+    "noImplicitAny": true,
+    "esModuleInterop": true,
+    "lib": [
+      "DOM",
+      "ES2020"
+    ],
+    "jsx": "react",
+    "jsxFactory": "tsx",
+    "target": "es5",
+    "experimentalDecorators": true,
+    "preserveConstEnums": true,
+    "moduleResolution": "node",
+    "importHelpers": true
+  },
+  "include": [
+    "./app/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
