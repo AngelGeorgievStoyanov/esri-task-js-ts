@@ -1,0 +1,17 @@
+{
+  "name": "esri-task-js-ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Angel Stoyanov",
+  "license": "ISC",
+  "dependencies": {
+    "@types/arcgis-js-api": "^4.26.0",
+    "concurrently": "^8.0.1",
+    "lite-server": "^2.6.1",
+    "typescript": "^5.0.4"
+  }
+}
